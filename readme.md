@@ -44,6 +44,24 @@ This is a list and lite documentation of everyday use Kubernetes commands :)
 => Service serves with permanent IP and as load balancers
 => Define blueprint for pods. So that a new pod can be created if app crashes.
 => In practice, DevOps will not create pods but Deployments. On Deoloyment, you will specify about the reolicas and scalability.
-=>
+=> Deployments are abatraction of pods. In Practice you will mostly work with Deployments, not pods.
+
+=> Database (state) replication is done by StatefulSet (not by deployments). So databases should be created by StatefulSet. For state-less app, deployments can be used. Statefulset (like deployment) will takecare of replicating pods (is chashed), scale up or down and make sure of database syncronization and resolve inconsistant read and write to the database.
+
+=> Databases are often hosted outside of the Kubuernetes clusters because configuring Statefulset is tidious and complex.
+
+## Summary of the main Kubernetes Components
+=>  Pod (abstraction of containers)
+    Service (communication between pods)
+    Ingress (route traffic into cluster)
+
+
+=>  ConfigMap (external configuration)
+    Secrets (external configuration)
+
+=> Volumes (Data persistance)
+
+=>  Deployment (Pod blueprint and replicating Mechanism)
+    Statefulset (Pod blueprint and replicating Mechanism)
 
 #### Happy Coding :) 
