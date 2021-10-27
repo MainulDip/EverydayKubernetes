@@ -28,6 +28,18 @@ This is a list and lite documentation of everyday use Kubernetes commands :)
 => Pod can die easily (pod funarel), for that reason service (static ip) is used.
 => Service provide permanent (static) IP address. Lifecycle of Pod and Service is not connected
 => External (public) and Internal (private)
-=> Ingress Component. Instade of service, request goes to Ingress first. Ingress decide to response with Public/Private services
+=> Ingress Component. Instade of service, request goes to Ingress first. Ingress decides to response with Public/Private services
+
+
+## Config Map and Secret for password/credentials storage
+=> External Config of the app. It helps to cnofiguire the running images on the fly. Bypass the nececity of building the image again on config change. Like Database URL changes, etc.
+
+=> Secret store data in base64 format. Can use it as environment variables or as a properties file.
+
+## Volumes and data storage:
+=> Volumes Resolve data loss on app crashes or pod/services restarts. Keep persistance. Volume can be local/remote(cloud) storage both inside and outside of the Kubernetes clusters.
+=> Kubernetes doesn't manage data persistance. You have to configure.
+
+## Deployment Statefull Sets:
 
 #### Happy Coding :) 
