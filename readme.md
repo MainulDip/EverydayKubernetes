@@ -23,5 +23,11 @@ This is a list and lite documentation of everyday use Kubernetes commands :)
 
 ## Kubernetes Components
 => Pod is the Smallest Unit of Kubernetes Worker node. It is the abstraction over containers
+=> Usually 1 application per pod
+=> Each pod gets its own ip address (internal dynamic ip, changes every time new pod is assaigned )
+=> Pod can die easily (pod funarel), for that reason service (static ip) is used.
+=> Service provide permanent (static) IP address. Lifecycle of Pod and Service is not connected
+=> External (public) and Internal (private)
+=> Ingress Component. Instade of service, request goes to Ingress first. Ingress decide to response with Public/Private services
 
 #### Happy Coding :) 
