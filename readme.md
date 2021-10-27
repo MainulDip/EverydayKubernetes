@@ -41,5 +41,9 @@ This is a list and lite documentation of everyday use Kubernetes commands :)
 => Kubernetes doesn't manage data persistance. You have to configure.
 
 ## Deployment Statefull Sets:
+=> Service serves with permanent IP and as load balancers
+=> Define blueprint for pods. So that a new pod can be created if app crashes.
+=> In practice, DevOps will not create pods but Deployments. On Deoloyment, you will specify about the reolicas and scalability.
+=>
 
 #### Happy Coding :) 
