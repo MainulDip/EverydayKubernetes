@@ -65,4 +65,9 @@ This is a list and lite documentation of everyday use Kubernetes commands :)
     Statefulset (Pod blueprint and replicating Mechanism)
 
 ## MiniKube and KubeCTL
+
+=> Minikube (One Node Cluster): Test on local machine. On this, Master and Node processes run on One machine. Docker Container Runtime is pre-installed.
+=> KubeCTL: A command-line tool/client for interacting with kubernetes cluster. It can interact with Api Server of the Master processes.
+
+## Installing Minikube:
 #### Happy Coding :) 
