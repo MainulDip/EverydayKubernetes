@@ -64,4 +64,5 @@ This is a list and lite documentation of everyday use Kubernetes commands :)
 =>  Deployment (Pod blueprint and replicating Mechanism)
     Statefulset (Pod blueprint and replicating Mechanism)
 
+## MiniKube and KubeCTL
 #### Happy Coding :) 
