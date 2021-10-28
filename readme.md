@@ -69,5 +69,25 @@ This is a list and lite documentation of everyday use Kubernetes commands :)
 => Minikube (One Node Cluster): Test on local machine. On this, Master and Node processes run on One machine. Docker Container Runtime is pre-installed.
 => KubeCTL: A command-line tool/client for interacting with kubernetes cluster. It can interact with Api Server of the Master processes.
 
-## Installing Minikube:
+## Installing Minikube and Kubectl:
+=> Follow officia operating system specific instructions 
+
+
+### Minikube and Kubectl walkthrough:
+
+```sh
+minikube start --driver=docker
+```
+Error: Exiting due to PROVIDER_DOCKER_NEWGRP
+```sh
+docker system prune
+minikube delete
+minikube start --driver=docker
+minikube start --force --driver=docker
+sudo groupadd docker
+sudo usermod -aG docker [user]
+newgrp docker
+minikube start
+```
+Solve: Got permission denied while trying to connect to the Docker daemon socket code
 #### Happy Coding :) 
