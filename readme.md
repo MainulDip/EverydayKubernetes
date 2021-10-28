@@ -129,12 +129,15 @@ Note: Deployment is the abstraction over Pods
 ```sh
 kubectl create deployment <NAME> --image=<image> [--dry-run] [optoions]
 kubectl create deployment nginx-depl --image=nginx
+kubectl create deployment nginx-depl --image=nginx:1.21.3-alpine
 kubectl get deployment
+kubectl get pod
 ```
 
 
 ### Debugging Pods:
 ```sh
+kubectl get pod
 kubectl logs <podname>
 kubectl desribe pod <podname>
 kubectl exec -it <podname>
@@ -147,6 +150,8 @@ kubectl apply -f <filename>
 kubectl apply -f config-file.yaml
 ```
 
+
+### Kubernetes With MongoDB/Express App:
 
 Note: Deep dive into "Kubernetes Architecture" to know more about how "Master and Worker Node actually work and the processes"
 
