@@ -79,15 +79,46 @@ This is a list and lite documentation of everyday use Kubernetes commands :)
 minikube start --driver=docker
 ```
 Error: Exiting due to PROVIDER_DOCKER_NEWGRP
+
 ```sh
 docker system prune
 minikube delete
+
 minikube start --driver=docker
+
 minikube start --force --driver=docker
+
 sudo groupadd docker
-sudo usermod -aG docker [user]
+sudo usermod -aG docker $USER
 newgrp docker
-minikube start
 ```
-Solve: Got permission denied while trying to connect to the Docker daemon socket code
+Error: Got permission denied while trying to connect to the Docker daemon socket code
+
+Solved: From https://docs.docker.com/engine/install/linux-postinstall/ create a Unix group called docker and add user
+
+```sh
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+
+### Minikube Startup and verify working Commands:
+=> Set --driver=docker to minikube when starting and make as default
+```sh
+minikube start --driver=docker
+minikube config set driver docker
+```
+=> Test if minikube working (will print Client and Server version)
+```sh
+kubectl version
+kubectl get nodes
+minikube status
+```
+
+### Basic Kubectl Commands:
+
+
+Note: Deep dive into "Kubernetes Architecture" to know more about how "Master and Worker Node actually and the processes"
+
 #### Happy Coding :) 
