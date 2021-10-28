@@ -152,7 +152,32 @@ kubectl apply -f config-file.yaml
 
 
 ### Kubernetes With MongoDB/Express App:
+=> Clearing all the deployments
+```sh
+kubectl get all
+kubectl get deploy
+kubectl delete deploy <deploymentname>
+```
+
+=> Create Secret Mongodb Credentials
+Secret must be created before the Deployment
+```sh
+echo -n 'username' | base64
+echo -n 'password' | base64
+```
+
+Then create secret by
+```sh
+kubectl apply -f mongo-secret.yaml
+kubectl get secret
+```
+After Secret Been Created, you can/need to reference that inside mongo-config.yaml
+```sh
+
+```
 
 Note: Deep dive into "Kubernetes Architecture" to know more about how "Master and Worker Node actually work and the processes"
+
+Cheat: https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
 #### Happy Coding :) 
