@@ -51,7 +51,7 @@ This is a list and lite documentation of everyday use Kubernetes commands :)
 => Databases are often hosted outside of the Kubuernetes clusters because configuring Statefulset is tidious and complex.
 
 ## Summary of the main Kubernetes Components
-=>  Pod (abstraction of containers)
+=>  Pod (abstraction of containers, pod is the smallest unit)
     Service (communication between pods)
     Ingress (route traffic into cluster)
 
@@ -117,8 +117,37 @@ minikube status
 ```
 
 ### Basic Kubectl Commands:
+```sh
+kubectl get pod
+kubectl get services
+kubectl create -h
+```
+
+=> Creating Pods Through Deployment
+Note: Deployment is the abstraction over Pods
+
+```sh
+kubectl create deployment <NAME> --image=<image> [--dry-run] [optoions]
+kubectl create deployment nginx-depl --image=nginx
+kubectl get deployment
+```
 
 
-Note: Deep dive into "Kubernetes Architecture" to know more about how "Master and Worker Node actually and the processes"
+### Debugging Pods:
+```sh
+kubectl logs <podname>
+kubectl desribe pod <podname>
+kubectl exec -it <podname>
+```
+Note: -it stands for interactive
+
+### Kubectl Configuration File with kubectl apply:
+```sh
+kubectl apply -f <filename>
+kubectl apply -f config-file.yaml
+```
+
+
+Note: Deep dive into "Kubernetes Architecture" to know more about how "Master and Worker Node actually work and the processes"
 
 #### Happy Coding :) 
