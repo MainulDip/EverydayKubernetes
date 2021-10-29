@@ -244,8 +244,6 @@ minikube service mongo-express-service
 If everything works perfectly, MongoDb Can be accessed on http://192.168.49.2:30000 
 
 
-Note: Deep dive into "Kubernetes Architecture" to know more about how "Master and Worker Node actually work and the processes"
-
-Cheat: https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+Note: Deep dive into "Kubernetes Architecture" to know more about how "Master and Worker Node actually work and the processes" and Cheat: https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
 #### Happy Coding :) 
