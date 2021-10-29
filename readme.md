@@ -180,6 +180,41 @@ Note: yaml file support single line comment using # sign
 
 Note: check if mongodb pod is deployed. if not delete the deployment using "kubectl delete deploy <deploymentname>", change necessery config and run again. Check the redey and status section from "kubectl get pod" command.
 
+Note: I had to change the mongo tag to mongo:4.4.10-focal from latest (version 5+)
+
+
+### MongoDB Internal Service Configuration:
+yaml support multiple configuration in single file. Three dashes "---" is the syntax for new document config
+
+```sh
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+  # random name
+spec:
+  selector:
+    app: mongodb
+    # Connect to Pod through label (metadata label app)
+  ports:
+  - protocol: TCP
+    port: 27017
+    # Service Port
+    targetPort: 27017
+    # Container Port of Deployment
+```
+After running/apply, check if service is running
+```sh
+kubectl get service
+kubectl describe service <servicename>
+kubectl get pod -o wide
+kubectl get all | grep mongodb
+```
+
+
+### Deployment Service and Config Map
+
 Note: Deep dive into "Kubernetes Architecture" to know more about how "Master and Worker Node actually work and the processes"
 
 Cheat: https://kubernetes.io/docs/reference/kubectl/cheatsheet/

@@ -34,3 +34,21 @@ spec:
             # secret config's metadata name
             key: mongo-root-password
             # secret config's data
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+  # random name
+spec:
+  selector:
+    app: mongodb
+    # Connect to Pod through label (metadata label app)
+  ports:
+  - protocol: TCP
+    port: 27017
+    # Service Port
+    targetPort: 27017
+    # Container Port of Deployment
