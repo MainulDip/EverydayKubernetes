@@ -214,6 +214,7 @@ kubectl get all | grep mongodb
 
 
 ### Deployment Service and Config Map
+Config map must already be in Kubernetes cluster when referencing. (like secret)
 
 Note: Deep dive into "Kubernetes Architecture" to know more about how "Master and Worker Node actually work and the processes"
 
