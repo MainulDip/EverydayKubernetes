@@ -139,7 +139,7 @@ kubectl get pod
 ```sh
 kubectl get pod
 kubectl logs <podname>
-kubectl desribe pod <podname>
+kubectl describe pod <podname>
 kubectl exec -it <podname>
 ```
 Note: -it stands for interactive
@@ -160,7 +160,7 @@ kubectl delete deploy <deploymentname>
 ```
 
 => Create Secret Mongodb Credentials
-Secret must be created before the Deployment
+Secret must be created before the Deployment and value must be encoded with base64
 ```sh
 echo -n 'username' | base64
 echo -n 'password' | base64
@@ -171,10 +171,14 @@ Then create secret by
 kubectl apply -f mongo-secret.yaml
 kubectl get secret
 ```
-After Secret Been Created, you can/need to reference that inside mongo-config.yaml
+After Secret Been Created, you can/need to reference that inside mongo-config.yaml and the run
 ```sh
-
+kubectl apply -f <mongodb-config.yaml>
 ```
+
+Note: yaml file support single line comment using # sign
+
+Note: check if mongodb pod is deployed. if not delete the deployment using "kubectl delete deploy <deploymentname>", change necessery config and run again. Check the redey and status section from "kubectl get pod" command.
 
 Note: Deep dive into "Kubernetes Architecture" to know more about how "Master and Worker Node actually work and the processes"
 
