@@ -211,10 +211,38 @@ kubectl describe service <servicename>
 kubectl get pod -o wide
 kubectl get all | grep mongodb
 ```
+This will give extra pod info "kubectl get pod -o wide"
 
+```sh
+kubectl get pod -o wide
+NAME                                READY   STATUS    RESTARTS   AGE    IP           NODE       NOMINATED NODE   READINESS GATES
+mongo-deployment-6c5794c794-n856v   1/1     Running   0          161m   172.17.0.3   minikube   <none>           <none>
+```
 
 ### Deployment Service and Config Map
 Config map must already be in Kubernetes cluster when referencing. (like secret)
+
+```sh
+kubectl get service
+kubectl describe service <servicename>
+```
+=> External Service Requires Type "LoadBalancer"
+If Kubectl get service returns <pending> for external ip, you have to run this on minikube
+```sh
+minikube service mongo-express-service
+```
+```sh
+minikube service mongo-express-service
+|-----------|-----------------------|-------------|---------------------------|
+| NAMESPACE |         NAME          | TARGET PORT |            URL            |
+|-----------|-----------------------|-------------|---------------------------|
+| default   | mongo-express-service |        8081 | http://192.168.49.2:30000 |
+|-----------|-----------------------|-------------|---------------------------|
+🎉  Opening service default/mongo-express-service in default browser...
+```
+
+If everything works perfectly, MongoDb Can be accessed on http://192.168.49.2:30000 
+
 
 Note: Deep dive into "Kubernetes Architecture" to know more about how "Master and Worker Node actually work and the processes"
 

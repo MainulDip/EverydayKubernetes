@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-express-deploy
+  labels:
+    app: mongo-express
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-express
+  template:
+    metadata:
+      labels:
+        app: mongo-express
+    spec:
+      containers:
+      - name: mongo-express
+        image: mongo-express:0.49.0
+        ports:
+        - containerPort: 8081
+        env:
+        - name: ME_CONFIG_BASICAUTH_USERNAME 
+          valueFrom:
+           secretKeyRef:
+            name: mongodb-secret
+            # secret config's metadata name
+            key: mongo-root-username
+            # secret config's data
+        - name: ME_CONFIG_BASICAUTH_PASSWORD
+          valueFrom:
+           secretKeyRef:
+            name: mongodb-secret
+            # secret config's metadata name
+            key: mongo-root-password
+        - name: ME_CONFIG_MONGODB_SERVER
+          valueFrom:
+           configMapKeyRef:
+            name: mongo-express-configmap
+            # configmap metadata name
+            key: database_url
+            # configmap config's data
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-express-service
+spec:
+  selector:
+    app: mongo-express-deploy
+  type: LoadBalancer
+  # This make it External Service
+  ports:
+  - protocol: TCP
+    port: 8081
+    targetPort: 8081
+    nodePort: 30000
+    # nodePort is required for external service and should be between 30000 to 32000
+  
